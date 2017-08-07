@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "666148780460",
+    "firebase_url": "https://topgames-ad8e1.firebaseio.com",
+    "project_id": "topgames-ad8e1",
+    "storage_bucket": "topgames-ad8e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:666148780460:android:c2bfa84ec9307078",
+        "android_client_info": {
+          "package_name": "com.example.android.topgames"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "666148780460-4vv4gfhe4tqla6fa361fsru4t6t9v52j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALTKHKPMrA65QssV-uzavuZPTHgz_hMxs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
