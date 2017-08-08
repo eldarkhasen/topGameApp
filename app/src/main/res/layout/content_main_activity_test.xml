@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.android.topgames.MainActivityTest"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    >
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
 
     <ImageView
         android:id="@+id/gameImage"
@@ -14,15 +14,14 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_width="0dp"
-        android:layout_height="240dp"
+        android:layout_height="190dp"
         android:scaleType="centerCrop"
         android:elevation="5dp"
-        android:src="@drawable/lol"
         >
     </ImageView>
     <TextView
         android:id="@+id/gameName"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintTop_toBottomOf="@+id/gameImage"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
@@ -34,7 +33,7 @@
         />
     <TextView
         android:id="@+id/shortDesc"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:paddingRight="17dp"
         android:paddingLeft="17dp"
         app:layout_constraintTop_toBottomOf="@+id/gameName"
@@ -43,7 +42,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         tools:text="Все участники придумывают по десять слов, пишут их на бумажках и кладут в шляпу. А дальше начинается самое интересное: игроки за ограниченное количество времени по очереди пытаются объяснить, показать или нарисовать попавшиеся им слова, а все остальные стараются их угадать. Самые успешные получают победные очки, почет, славу и медаль на шею."
-        android:textSize="16dp"
+        android:textSize="15dp"
         android:maxLines="12"
         android:textColor="@color/colorDesc"
         />
@@ -70,21 +69,16 @@
         app:layout_constraintRight_toRightOf="@+id/more"
         app:layout_constraintLeft_toLeftOf="@+id/more"
         android:background="@color/colorPrimary"></View>
-    <Button
-        android:id="@+id/nextGame"
-        app:layout_constraintTop_toBottomOf="@+id/shortDesc"
-        android:layout_width="150dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="@dimen/fab_margin"
+        app:layout_anchor="@id/app_bar"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Найти еще"
-        android:textSize="20dp"
-        android:textColor="@android:color/white"
-        android:elevation="10dp"
-        android:onClick="getRandom"
-        android:shadowColor="@android:color/black"
-        android:background="@drawable/mybutton"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:srcCompat="@drawable/next" />
     <ProgressBar
         android:id="@+id/determinateBar"
         android:visibility="invisible"

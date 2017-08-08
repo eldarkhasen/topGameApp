@@ -7,6 +7,7 @@ import java.io.Serializable;
  */
 
 public class Game implements Serializable {
+    public Long GameID;
     public String GameName;
     public String Play;
     public String Preparation;
@@ -32,6 +33,14 @@ public class Game implements Serializable {
         Preparation = preparation;
         Restriction = restriction;
     }*/
+
+    public Long getGameID() {
+        return GameID;
+    }
+
+    public void setGameID(Long gameID) {
+        GameID = gameID;
+    }
 
     public String getGameName() {
         return GameName;

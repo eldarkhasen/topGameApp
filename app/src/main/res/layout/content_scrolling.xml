@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.android.topgames.ScrollingActivity"
+    tools:showIn="@layout/activity_scrolling">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/gameName"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            tools:text="The HAT"
+            android:textSize="30dp"
+            android:textColor="@android:color/black"
+            />
+        <TextView
+            android:id="@+id/shortDesc"
+            android:layout_marginTop="5dp"
+            android:paddingRight="17dp"
+            android:paddingLeft="17dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            tools:text="Все участники придумывают по десять слов, пишут их на бумажках и кладут в шляпу. А дальше начинается самое интересное: игроки за ограниченное количество времени по очереди пытаются объяснить, показать или нарисовать попавшиеся им слова, а все остальные стараются их угадать. Самые успешные получают победные очки, почет, славу и медаль на шею."
+            android:textSize="16dp"
+            android:textColor="@color/colorDesc"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:id="@+id/textPlay"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Игра"
+                android:layout_marginLeft="15dp"
+                android:textSize="24dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/playText"
+                android:layout_marginTop="5dp"
+                android:paddingRight="17dp"
+                android:paddingLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Все участники придумывают по десять слов, пишут их на бумажках и кладут в шляпу. А дальше начинается самое интересное: игроки за ограниченное количество времени по очереди пытаются объяснить, показать или нарисовать попавшиеся им слова, а все остальные стараются их угадать. Самые успешные получают победные очки, почет, славу и медаль на шею."
+                android:textSize="16dp"
+                android:textColor="@color/colorDesc"
+                />
+            <TextView
+                android:id="@+id/textPreparation"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Подготовка"
+                android:layout_marginLeft="15dp"
+                android:textSize="24dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/prepareText"
+                android:layout_marginTop="5dp"
+                android:paddingRight="17dp"
+                android:paddingLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:text="Все участники придумывают по десять слов, пишут их на бумажках и кладут в шляпу. А дальше начинается самое интересное: игроки за ограниченное количество времени по очереди пытаются объяснить, показать или нарисовать попавшиеся им слова, а все остальные стараются их угадать. Самые успешные получают победные очки, почет, славу и медаль на шею."
+                android:textSize="16dp"
+                android:textColor="@color/colorDesc"
+                />
+            <TextView
+                android:id="@+id/titleRestriction"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Нельзя"
+                android:layout_marginLeft="15dp"
+                android:textSize="24dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/restrictionText"
+                android:layout_marginTop="5dp"
+                android:paddingRight="17dp"
+                android:paddingLeft="20dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                tools:text="Все участники придумывают по десять слов, пишут их на бумажках и кладут в шляпу. А дальше начинается самое интересное: игроки за ограниченное количество времени по очереди пытаются объяснить, показать или нарисовать попавшиеся им слова, а все остальные стараются их угадать. Самые успешные получают победные очки, почет, славу и медаль на шею."
+                android:textSize="16dp"
+                android:textColor="@color/colorDesc"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

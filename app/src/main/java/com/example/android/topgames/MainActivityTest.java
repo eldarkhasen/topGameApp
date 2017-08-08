@@ -2,8 +2,12 @@ package com.example.android.topgames;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
@@ -23,6 +27,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.android.topgames.Config.Config;
 import com.example.android.topgames.Models.Game;
 import com.firebase.client.DataSnapshot;
@@ -43,14 +48,18 @@ public class MainActivityTest extends AppCompatActivity
     private TextView more;
     private View moreView;
     public int c;
+    public CoordinatorLayout linearLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_test);
+
+        if(isNetworkConnected()==false){
+            Intent mIntent = new Intent(MainActivityTest.this,FavoGamesActivity.class);
+            startActivity(mIntent);
+        }
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -71,30 +80,34 @@ public class MainActivityTest extends AppCompatActivity
         moreView = (View) findViewById(R.id.more_view);
         more.setVisibility(View.INVISIBLE);
         moreView.setVisibility(View.INVISIBLE);
-        more.setOnTouchListener(new View.OnTouchListener() {
-
+        more.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View arg0, MotionEvent arg1) {
-                // TODO Auto-generated method stub
+            public void onClick(View view) {
                 Intent mIntent = new Intent(MainActivityTest.this,GameDetailActivity.class);
                 mIntent.putExtra("Game", (Serializable) mainGame);
                 startActivity(mIntent);
-                return false;
             }
         });
 
 
-        nextButton = (Button) findViewById(R.id.nextGame);
-        getRandom(nextButton);
 
+        getRandom();
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getRandom();
+            }
+        });
 
     }
 
-    public void getRandom(View view){
+    public void getRandom(){
         Firebase.setAndroidContext(this);
         Firebase ref = new Firebase(Config.FIREBASE_URL);
         simpleProgressBar.setVisibility(View.VISIBLE);
         ref.child("Game").addValueEventListener(new ValueEventListener() {
+
             @Override
             public void onDataChange(DataSnapshot snapshot) {
 
@@ -124,15 +137,26 @@ public class MainActivityTest extends AppCompatActivity
 
             @Override
             public void onCancelled(FirebaseError firebaseError) {
+                linearLayout = (CoordinatorLayout) findViewById(R.id.main);
                 System.out.println("The read failed: " + firebaseError.getMessage());
                 simpleProgressBar.setVisibility(View.INVISIBLE);
+                Snackbar snackbar = Snackbar
+                        .make(linearLayout, "Нет интернет соединения", Snackbar.LENGTH_LONG);
+                View sbView = snackbar.getView();
+                TextView textView = (TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(Color.RED);
+                snackbar.show();
             }
         });
     }
 
     public void setImage(Context context, String image){
         ImageView gameImg = (ImageView) findViewById(R.id.gameImage);
-        Glide.with(context).load(image).into(gameImg);
+        Glide.with(context)
+                .load(image)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .placeholder(R.drawable.placeh)
+                .into(gameImg);
     }
 
 
@@ -153,16 +177,21 @@ public class MainActivityTest extends AppCompatActivity
         return true;
     }
 
+    private boolean isNetworkConnected() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
+        return cm.getActiveNetworkInfo() != null;
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
+
         int id = item.getItemId();
 
         if (id == R.id.nav_favorite) {
-
+            Intent mIntent = new Intent(MainActivityTest.this,FavoGamesActivity.class);
+            startActivity(mIntent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

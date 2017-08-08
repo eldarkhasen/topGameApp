@@ -10,21 +10,30 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    // The database name
+
     private static final String DATABASE_NAME = "toDoList.db";
-    // If you change the database schema, you must increment the database version
+
     private static final int DATABASE_VERSION = 1;
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+    public void onCreate(SQLiteDatabase db) {
+        final String SQL_CREATE_WAITLIST_TABLE = "CREATE TABLE " + GameContract.GameEntity.TABLE_NAME + " (" +
+                GameContract.GameEntity._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                GameContract.GameEntity.COLUMN_GAME_NAME + " TEXT NOT NULL, " +
+                GameContract.GameEntity.COLUMN_GAME_PLAY + " TEXT NOT NULL, " +
+                GameContract.GameEntity.COLUMN_SHORT_DESC + " TEXT NOT NULL, " +
+                GameContract.GameEntity.COLUMN_GAME_PREPARATION + " TEXT NOT NULL, " +
+                GameContract.GameEntity.COLUMN_GAME_RESRICTION + " TEXT NOT NULL, " +
+                GameContract.GameEntity.COLUMN_GAME_IMAGE + " TEXT NOT NULL " + " ); ";
+        db.execSQL(SQL_CREATE_WAITLIST_TABLE);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+        db.execSQL("DROP TABLE IF EXISTS " + GameContract.GameEntity.TABLE_NAME);
+        onCreate(db);
     }
 }
